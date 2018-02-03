@@ -29,7 +29,7 @@ export default class About extends Component<{}> {
             <ActivityIndicator size="small" color="#026fd3" />
               <Text></Text>
               <Text></Text>
-            <Button onPress={()=>{}} title="Go to Chat" />
+            <Button onPress={()=>{}} title="Go to Chat test" />
           </View>
         </View>
     );
