@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from '../stylesheets';
 import {
   Platform,
   StyleSheet,
@@ -22,7 +23,7 @@ export default class Friends extends Component<{}> {
         { 'name':'Phan văn Đức','id':'have nice day!','cover':'', 'is_online':false },
         { 'name':'Bùi Tiến Dũng','id':'Congratulate!', 'cover':'','is_online':false },
       ],
-      access_token:'EAACEdEose0cBAOoVW9PCZBTpc4vXGtwZC3uZAxJ5ZBprpV5ODZAanXDGfaBHYGUjAKGgxjBvx9UUZAZCUtdZAVsAdhLEaN6kVSYZCF0sY8xA3ZAQju9Ll3eGfLl4lMSIezZBmHyLdZBcC0PbNPirdIZBQiJyZBR0fNIA7cWH3TwGzsVslKnnBY5mqrRxi6bZAKPDrT9DnsZD'
+      access_token:'EAACEdEose0cBAKgPpluk2UZAx6EYMP2VZBfTdUUg6Ga1GAV2EhhO2FnzZB7v953BaaVfvfiXvvlYOZA9Hkn6Wzrk4SN7vBXnZAUzgSUpA6DxHFkIXOX1C3cwFTSSnfYjCfTkiFxhPd0wTPxWyOjQ3KyzXhER1Nzo8iP6qqomC8nF98myrrEcdOgSyIDwmi9QZD'
     };
   }
   static navigationOptions = () => ({
@@ -39,28 +40,28 @@ export default class Friends extends Component<{}> {
       this.setState(this.state.message);
     })
     .catch((error) => {
-      alert(error);
+      alert('token hết hạn, vui lòng get lai');
     });
   }
   render() {
     return (
-        <View style={friendStyle.messagebox}>
+        <View style={styles.friendbox}>
           <FlatList
            data={this.state.message}
            renderItem={({item}) =>
-             <TouchableOpacity onPress={()=>{this.props.navigation.navigate('Chat',{ user:item.name })}}>
-               <View style={friendStyle.row}>
-                   <View style={friendStyle.avatar}>
+             <TouchableOpacity onPress={()=>{ this.props.navigation.navigate('Chat',{ user:item.name })}}>
+               <View style={styles.row_friend}>
+                   <View style={styles.avatar_friend}>
                        <Image
                        style={{borderRadius:25,width: 50, height: 50}}
                        source={{uri: item.cover.source}}
                      />
                    </View>
-                 <View style={friendStyle.message}>
+                 <View style={styles.message_friend}>
                    <Text>{item.name}</Text>
                    <Text >{item.id}</Text>
                  </View>
-                 <View style={friendStyle.online}>
+                 <View style={styles.online_friend}>
                    <Image
                    style={{ borderRadius:5,width: 10, height: 10}}
                    source={{uri:'http://www.clker.com/cliparts/N/G/g/v/d/N/glossy-red-icon-button-md.png'}} />
@@ -73,29 +74,3 @@ export default class Friends extends Component<{}> {
     );
   }
 }
-var friendStyle = StyleSheet.create({
-  messagebox:{
-    flex:1,
-    backgroundColor:'#e5e5e5'
-  },
-  row:{
-    flexDirection:"row",
-    flex:1,
-    marginTop:5,
-    padding:10,
-    borderWidth:1,
-    borderColor:'#fff',
-    borderRadius:3,
-    backgroundColor:'#fff'
-  },
-  avatar:{
-    flex:2/10,
-  },
-  message:{
-    flex:7/10
-  },
-  online:{
-    flex:1/10,
-    alignItems:'center'
-  }
-});

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from '../stylesheets';
 import Input from './input';
 import Message from './message';
 import {
@@ -24,7 +25,7 @@ export default class Chat extends Component<{}> {
       title="About" />
       </TouchableOpacity>
     )
-  })
+  });
   render() {
     return (
         <View style={styles.container}>
@@ -32,11 +33,5 @@ export default class Chat extends Component<{}> {
           <Input/>
         </View>
     );
-  }
+  };
 }
-
-const styles = StyleSheet.create({
-  container:{
-    flex:1
-  }
-});

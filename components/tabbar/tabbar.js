@@ -2,9 +2,10 @@ import React,{ Component } from 'react';
 import TabNavigator from 'react-native-tab-navigator';
 import Friends from '../friends/friends';
 import { FriendsRoute } from '../friends/friendsRoute'
-import Menu from '../menu/menu';
+import Profile from '../profile/profile';
 import Chat from '../chat/chat';
-import Home from '../home/home';
+import Newfeed from '../newfeed/newfeed';
+import Drawermenu from '../drawerMenu/mainview';
 import {
   View,
   Text,
@@ -16,7 +17,7 @@ export default class Tabbar extends Component<{}>{
   constructor(props){
     super(props);
     this.state = {
-      selectedTab:'home',
+      selectedTab:'cinema',
       numberMessage:4
     }
   }
@@ -25,14 +26,16 @@ export default class Tabbar extends Component<{}>{
   })
   render(){
     return (
-      <TabNavigator>
+      <TabNavigator
+        tabBarStyle={{backgroundColor:'#141417'}}
+        >
         <TabNavigator.Item
           selected={this.state.selectedTab === 'home'}
           title="Home"
           renderIcon={() => <Image source={require('../images/home_black.png')} />}
           renderSelectedIcon={() => <Image source={require('../images/home_green.png')} />}
           onPress={() => this.setState({ selectedTab: 'home' })}>
-          <Home/>
+          <Newfeed/>
         </TabNavigator.Item>
         <TabNavigator.Item
           selected={this.state.selectedTab === 'friends'}
@@ -43,12 +46,12 @@ export default class Tabbar extends Component<{}>{
           <FriendsRoute/>
         </TabNavigator.Item>
         <TabNavigator.Item
-          selected={this.state.selectedTab === 'notification'}
-          title="notification"
-          renderIcon={() => <Image source={require('../images/noti_black.png')} />}
-          renderSelectedIcon={() => <Image source={require('../images/noti_green.png')} />}
-          onPress={() => this.setState({ selectedTab: 'notification' })}>
-          <FriendsRoute/>
+          selected={this.state.selectedTab === 'cinema'}
+          title="cinema"
+          renderIcon={() => <Image style={{width:26,height:26}} source={require('../images/cinema_black.png')} />}
+          renderSelectedIcon={() => <Image style={{width:26,height:26}} source={require('../images/cinema_red.png')} />}
+          onPress={() => this.setState({ selectedTab: 'cinema' })}>
+          <Drawermenu/>
         </TabNavigator.Item>
         <TabNavigator.Item
           selected={this.state.selectedTab === 'message'}
@@ -65,7 +68,7 @@ export default class Tabbar extends Component<{}>{
           renderIcon={() => <Image source={require('../images/profile_black.png')} />}
           renderSelectedIcon={() => <Image source={require('../images/profile_green.png')} />}
           onPress={() => this.setState({ selectedTab: 'profile' })}>
-          <Menu/>
+          <Profile/>
         </TabNavigator.Item>
       </TabNavigator>
     );

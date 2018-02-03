@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from '../stylesheets';
 import { connect } from 'react-redux';
 import {
   Platform,
@@ -27,7 +28,7 @@ class Message extends Component<{}> {
         <ScrollView style={styles.messagebox}>
           {
             this.props.mymessage.map((word) =>
-              <View style={styles.row}>
+              <View style={styles.row_message}>
                 <TouchableOpacity>
                   <View style={styles.avatar}>
                       <Image
@@ -53,28 +54,3 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps)(Message);
-
-var styles = StyleSheet.create({
-  messagebox:{
-    flex:5/8,
-    backgroundColor:'#e5e5e5'
-  },
-  row:{
-    flexDirection:"row",
-    flex:1,
-    marginTop:5,
-    padding:10,
-    borderWidth:1,
-    borderColor:'#fff',
-    borderRadius:3,
-    backgroundColor:'#fff'
-  },
-  avatar:{
-    flex:1,
-  },
-  message:{
-    flex:4,
-    justifyContent:'center',
-    padding:5
-  }
-});
