@@ -14,6 +14,7 @@ export default class ControlPanel extends Component{
       await AsyncStorage.removeItem('@LoginMetiz:key');
       console.log('Logout !');
       alert('logout thành công!');
+      this.props.navigation.navigate('Login')
     } catch (error) {
       console.log(error);
     }
